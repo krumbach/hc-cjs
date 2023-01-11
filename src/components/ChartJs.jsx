@@ -24,6 +24,7 @@ ChartJS.register(
 
 const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
         legend: {
             position: 'top',
@@ -36,7 +37,7 @@ const options = {
 };
 
 const ChartJs = ({ data }) => {
-    const chartjsData = useMemo(() => (
+    const chartData = useMemo(() => (
         {
             labels: data.x,
             datasets: [{
@@ -49,9 +50,10 @@ const ChartJs = ({ data }) => {
         }), [data]);
 
     return (
-        <div style={{ height: 750, width: 750 }}>
-            <Line options={options} data={chartjsData} />;
-        </div>
+            <Line 
+                options={options} 
+                data={chartData}
+            />
     )
 }
 

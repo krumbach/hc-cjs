@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import './App.css';
 
 import ChartJs from './components/ChartJs';
 import HChart from './components/HChart';
@@ -15,20 +16,22 @@ const App = () => {
   }, [count]);
 
   return (
-    <>
-      <button onClick={() => setCount(100)}>100</button>
-      <button onClick={() => setCount(500)}>500</button>
-      <button onClick={() => setCount(1000)}>1000</button>
-      <button onClick={() => setCount(5000)}>5000</button>
+    <div>
+      <h2>{count}</h2>
+      {
+        [100, 500, 1000, 5000, 10000].map((c) => (
+          <button key={c} onClick={() => setCount(c)}>{c}</button>
+        ))
+      }
 
-      <div style={{ height: 300, width: 750, marginBottom: '100px' }}>
+      <div style={{ height: 275, width: '100%', marginBottom: '40px' }}>
         <ChartJs data={data} />
       </div>
 
-      <div style={{ height: 300, width: 750 }}>
+      <div style={{ height: 275, width: '100%' }}>
         <HChart data={data} />
       </div>
-    </>
+    </div>
   );
 }
 
